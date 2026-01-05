@@ -1,4 +1,5 @@
 [versions]
+# ===== YOUR EXISTING VERSIONS (UNCHANGED) =====
 agp = "8.10.0"
 kotlin = "2.0.21"
 coreKtx = "1.17.0"
@@ -12,7 +13,38 @@ jetbrainsKotlinJvm = "2.0.21"
 appcompat = "1.7.1"
 material = "1.13.0"
 
+# ===== NEW VERSIONS ADDED =====
+# Compose Extensions
+composeNavigation = "2.8.5"
+composeHiltNavigation = "1.2.0"
+composeMaterialIconsExtended = "1.7.6"
+
+# Lifecycle Extensions
+lifecycleViewModelCompose = "2.10.0"
+lifecycleRuntimeCompose = "2.10.0"
+
+# Coroutines
+coroutines = "1.9.0"
+
+# Dependency Injection
+hilt = "2.54"
+ksp = "2.0.21-1.0.29"
+
+# Networking
+retrofit = "2.11.0"
+okhttp = "4.12.0"
+moshi = "1.15.1"
+
+# Database
+room = "2.7.0"
+
+# Testing
+mockk = "1.13.14"
+turbine = "1.2.0"
+coroutinesTest = "1.9.0"
+
 [libraries]
+# ===== YOUR EXISTING LIBRARIES (UNCHANGED) =====
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -30,7 +62,51 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
+# ===== NEW LIBRARIES ADDED =====
+# Lifecycle Extensions
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycleViewModelCompose" }
+androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycleRuntimeCompose" }
+
+# Compose Navigation
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "composeNavigation" }
+androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "composeHiltNavigation" }
+
+# Compose Material Icons Extended
+androidx-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "composeMaterialIconsExtended" }
+
+# Coroutines
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+
+# Hilt (Dependency Injection)
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+
+# Retrofit & OkHttp (Networking)
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-converter-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+
+# Moshi (JSON serialization)
+moshi = { group = "com.squareup.moshi", name = "moshi", version.ref = "moshi" }
+moshi-kotlin = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi" }
+moshi-codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "moshi" }
+
+# Room (Database)
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+
+# Testing (New additions)
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+mockk-android = { group = "io.mockk", name = "mockk-android", version.ref = "mockk" }
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutinesTest" }
+
 [plugins]
+# ===== YOUR EXISTING PLUGINS (UNCHANGED) =====
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt" }
@@ -38,3 +114,58 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 
+# ===== NEW PLUGINS ADDED =====
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+
+[bundles]
+# Optional: Convenient bundles for common dependency groups
+compose = [
+    "androidx-ui",
+    "androidx-ui-graphics",
+    "androidx-ui-tooling-preview",
+    "androidx-material3",
+    "androidx-compose-material-icons-extended"
+]
+
+lifecycle = [
+    "androidx-lifecycle-runtime-ktx",
+    "androidx-lifecycle-viewmodel-ktx",
+    "androidx-lifecycle-viewmodel-compose",
+    "androidx-lifecycle-runtime-compose"
+]
+
+retrofit = [
+    "retrofit",
+    "retrofit-converter-moshi",
+    "okhttp",
+    "okhttp-logging-interceptor"
+]
+
+moshi = [
+    "moshi",
+    "moshi-kotlin"
+]
+
+room = [
+    "androidx-room-runtime",
+    "androidx-room-ktx"
+]
+
+coroutines = [
+    "kotlinx-coroutines-core",
+    "kotlinx-coroutines-android"
+]
+
+testing = [
+    "junit",
+    "mockk",
+    "turbine",
+    "kotlinx-coroutines-test"
+]
+
+android-testing = [
+    "androidx-junit",
+    "androidx-espresso-core",
+    "mockk-android"
+]

@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -36,9 +38,14 @@ dependencies {
     implementation(project(":core:common"))
 
     // Retrofit + OkHttp
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.11")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation(libs.bundles.retrofit)
+
+    // Hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+
+    // Moshi
+    implementation(libs.bundles.moshi)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

@@ -1,10 +1,11 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
-    namespace = "com.modernarch.core.common"
+    namespace = "app.phayzee.core_common"
     compileSdk = 35
 
     defaultConfig {

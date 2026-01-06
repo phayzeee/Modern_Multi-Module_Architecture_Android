@@ -2,13 +2,13 @@
 # ===== YOUR EXISTING VERSIONS (UNCHANGED) =====
 agp = "8.10.0"
 kotlin = "2.0.21"
-coreKtx = "1.17.0"
+coreKtx = "1.15.0"                 # NEW (downgraded from 1.17.0 → API 35)
 junit = "4.13.2"
 junitVersion = "1.3.0"
 espressoCore = "3.7.0"
 lifecycleRuntimeKtx = "2.10.0"
-activityCompose = "1.12.2"
-composeBom = "2024.09.00"
+activityCompose = "1.10.1"         # NEW (downgraded from 1.12.2 → API 35)
+composeBom = "2024.05.00"          # NEW (last stable BOM for API 35)
 jetbrainsKotlinJvm = "2.0.21"
 appcompat = "1.7.1"
 material = "1.13.0"

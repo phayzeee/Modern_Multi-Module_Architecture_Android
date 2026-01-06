@@ -6,9 +6,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,16 +16,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 /**
- * Empty state component.
- * Shows when there's no data to display.
+ * Error state component.
+ * Shows an error message with optional retry button.
  */
 @Composable
-fun EmptyState(
+fun ErrorState(
     message: String,
     modifier: Modifier = Modifier,
-    icon: String = "📭",
-    actionText: String? = null,
-    onAction: (() -> Unit)? = null
+    onRetry: (() -> Unit)? = null
 ) {
     Box(
         modifier = modifier.fillMaxSize(),
@@ -37,7 +35,7 @@ fun EmptyState(
             modifier = Modifier.padding(24.dp)
         ) {
             Text(
-                text = icon,
+                text = "⚠️",
                 style = MaterialTheme.typography.displayMedium
             )
             Spacer(modifier = Modifier.height(16.dp))
@@ -47,10 +45,10 @@ fun EmptyState(
                 textAlign = TextAlign.Center,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
-            if (actionText != null && onAction != null) {
+            onRetry?.let {
                 Spacer(modifier = Modifier.height(24.dp))
-                OutlinedButton(onClick = onAction) {
-                    Text(actionText)
+                Button(onClick = it) {
+                    Text("Retry")
                 }
             }
         }

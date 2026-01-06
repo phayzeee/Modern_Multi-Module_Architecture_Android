@@ -17,10 +17,11 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
-
     /**
      * Provides the Room database instance.
      * Database is created as a singleton to ensure only one instance exists.
+     *
+     * Note: AppDatabase extends RoomDatabase, which is required by Room.
      */
     @Provides
     @Singleton
@@ -30,14 +31,15 @@ object DatabaseModule {
         return Room.databaseBuilder(
             context,
             AppDatabase::class.java,
-            "android_modern_database"
+            "modern_arch_database"
         )
-            .fallbackToDestructiveMigration() // In production, use proper migrations
+            .fallbackToDestructiveMigration()
             .build()
     }
 
     /**
-     * Provides ProductDao for database operations
+     * Provides ProductDao from the database instance.
+     * Room automatically generates the implementation at compile time.
      */
     @Provides
     @Singleton

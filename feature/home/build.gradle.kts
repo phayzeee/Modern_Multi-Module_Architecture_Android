@@ -69,8 +69,12 @@ dependencies {
     // Coroutines
     implementation(libs.bundles.coroutines)
 
+    // Accompanist Swipe Refresh (for pull-to-refresh)
+    implementation("com.google.accompanist:accompanist-swiperefresh:0.32.0")
+
+
     // Coil for image loading
-    implementation("io.coil-kt:coil-compose:2.5.0")
+    implementation(libs.coil.compose)
 
     // Testing
     testImplementation(libs.bundles.testing)

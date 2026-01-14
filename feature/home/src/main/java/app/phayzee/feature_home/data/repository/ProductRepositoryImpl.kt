@@ -7,8 +7,9 @@ import app.phayzee.feature_home.domain.model.Product
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import app.phayzee.core_common.result.Result
+import app.phayzee.feature_home.data.mapper.dtoToDomainModels
+import app.phayzee.feature_home.data.mapper.entityToDomainModels
 import app.phayzee.feature_home.data.mapper.toDomainModel
-import app.phayzee.feature_home.data.mapper.toDomainModels
 import app.phayzee.feature_home.data.mapper.toEntities
 import app.phayzee.feature_home.domain.repository.ProductRepository
 import javax.inject.Inject
@@ -46,7 +47,7 @@ class ProductRepositoryImpl @Inject constructor(
      */
     override fun observeProducts(): Flow<Result<List<Product>>> {
         return productDao.observeAllProducts()
-            .map { entities -> entities.toDomainModels() }
+            .map { entities -> entities.entityToDomainModels() }
             .asResultWithoutLoading()
     }
 
@@ -69,7 +70,7 @@ class ProductRepositoryImpl @Inject constructor(
             val dtos = productApi.getProducts()
 
             // Convert to domain models
-            val products = dtos.toDomainModels()
+            val products = dtos.dtoToDomainModels()
 
             // Save to database
             val entities = products.toEntities()

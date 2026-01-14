@@ -5,43 +5,48 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import app.phayzee.modernmulti_modulearchitectureandroid.ui.theme.ModernMultiModuleArchitectureAndroidTheme
+import app.phayzee.core_ui.theme.ModernArchTheme
+import app.phayzee.modernmulti_modulearchitectureandroid.navigation.AppNavigation
+import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * Main (and only) Activity for the app.
+ *
+ * This is a single-Activity architecture using Jetpack Compose Navigation.
+ * All screens are Composables, not separate Activities.
+ *
+ * Benefits:
+ * - Shared ViewModels across screens
+ * - Smooth transitions
+ * - Better state management
+ * - Easier to test
+ *
+ * @AndroidEntryPoint enables Hilt dependency injection in this Activity.
+ */
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Enable edge-to-edge display (goes under status bar)
         enableEdgeToEdge()
+
         setContent {
-            ModernMultiModuleArchitectureAndroidTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+            // Apply app theme
+            ModernArchTheme {
+                // Surface provides background color
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    // Start navigation
+                    AppNavigation()
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ModernMultiModuleArchitectureAndroidTheme {
-        Greeting("Android")
     }
 }

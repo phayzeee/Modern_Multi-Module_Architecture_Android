@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
-    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -13,6 +12,11 @@ android {
     defaultConfig {
         minSdk = 24
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // Room schema export configuration
+        ksp {
+            arg("room.schemaLocation", "$projectDir/schemas")
+        }
     }
 
     compileOptions {

@@ -1,5 +1,6 @@
 package app.phayzee.core_database.converter
 
+
 import androidx.room.TypeConverter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
@@ -41,12 +42,6 @@ class Converters {
         return adapter.fromJson(value)
     }
 
-    /**
-     * Example: Converting Long timestamps (can add more converters as needed)
-     */
-    @TypeConverter
-    fun fromTimestamp(value: Long?): Long? = value
-
-    @TypeConverter
-    fun toTimestamp(value: Long?): Long? = value
+    // Note: Room handles Long, Int, Double, String, Boolean primitives automatically
+    // We only need converters for complex types like Lists, custom objects, etc.
 }

@@ -75,6 +75,6 @@ fun ProductEntity.toDomainModel(): Product {
 /**
  * Extension functions for lists
  */
-fun List<ProductDto>.toDomainModels(): List<Product> = map { it.toDomainModel() }
+fun List<ProductDto>.dtoToDomainModels(): List<Product> = map { it.toDomainModel() }
 fun List<Product>.toEntities(): List<ProductEntity> = map { it.toEntity() }
-fun List<ProductEntity>.toDomainModels(): List<Product> = map { it.toDomainModel() }
+fun List<ProductEntity>.entityToDomainModels(): List<Product> = map { it.toDomainModel() }
